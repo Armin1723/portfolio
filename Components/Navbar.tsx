@@ -14,7 +14,7 @@ const Navbar = () => {
           const isActive = pathname.includes(link.href) ? 'text-neon-green border-b-2 border-neon-green' : ''
           const specialButton = link.name === 'Hire Me' ? 'bg-neon-green text-zinc-900 rounded-2xl hover:text-black hover:border-b-0 font-semibold' : ''
           return (
-            <a key={index} href={link.href} className={`text-xs md:mx-3 ${specialButton} ${isActive} p-2 hover:text-neon-green `}>{link.name}</a>  
+            <Link key={index} href={link.href} className={`text-xs md:mx-3 ${specialButton} ${isActive} p-2 hover:text-neon-green transition-all`}>{link.name}</Link>  
           )}
         )}
       </div>
