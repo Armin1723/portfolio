@@ -1,26 +1,72 @@
-import Numbers from "@/Components/Numbers";
-import React from "react";
+"use client";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import React, { useRef } from "react";
+import CountUp from "react-countup";
 
 const page = () => {
+  gsap.registerPlugin(useGSAP);
+  const container = useRef(null);
+  useGSAP(
+    () => {
+      const tl = gsap.timeline();
+      tl.from(".line1", {
+        y: 24,
+        opacity: 0,
+      });
+      tl.from(".line2", {
+        y: 24,
+        opacity: 0,
+      });
+      tl.from(".line3", {
+        y: 24,
+        opacity: 0,
+      });
+      tl.from(".description", {
+        x: -36,
+        opacity: 0,
+        ease: "power2.in",
+      });
+      tl.from('.image',{
+        x : 36,
+        opacity : 0,
+        delay : 0
+      })
+      tl.from('.interactions',{
+        opacity : 0,
+        scale : 0.5
+      })
+      tl.from('.numbers',{
+        y : 24,
+        opacity : 0,
+        stagger : 2,
+        delay : -2
+      })
+    },
+    { scope: container }
+  );
   return (
-    <section className="w-[100vw] lg:w-[70vw] px-6 lg:px-12">
+    <section className="w-[100vw] lg:w-[70vw] px-6 lg:px-12" ref={container}>
       <div className="hero flex h-[65vh] flex-row justify-between items-center max-sm:flex-col-reverse">
         <div className="details max-lg:px-2 flex items-left flex-col justify-center md:w-1/2">
-          <p className="line1 text-xs">Software Developer</p>
-          <p className="line2 text-4xl overflow-hidden py-1 font-bold tracking-wider">
-            Hello I'm
-          </p>
-          <p className="line3 text-5xl overflow-hidden py-1 text-neon-green font-bold tracking-wider">
-            Uzair Alam
-          </p>
-          <p className="py-2 font-thin text-xs leading-6">
-            I excel at creating MERN stack websites along with expertise in
-            NextJS.
-          </p>
+          <div className="overflow-hidden">
+            <p className="line1 text-xs ">Software Developer</p>
+          </div>
+          <div className=" text-4xl overflow-hidden font-bold tracking-wider">
+            <p className="line2 py-1">Hello I'm</p>
+          </div>
+          <div className=" text-5xl overflow-hidden text-neon-green font-bold tracking-wider">
+            <p className="line3 py-1">Uzair Alam</p>
+          </div>
+          <div className="overflow-hidden font-thin text-xs leading-6">
+            <p className="description py-1">
+              I excel at creating MERN stack websites along with expertise in
+              NextJS.
+            </p>
+          </div>
           <div className="interactions mt-4 flex gap-4 items-center">
             <button className="px-4 py-1 select-none rounded-xl border-2 border-neon-green text-neon-green mr-4 hover:bg-neon-green hover:text-gray-900 uppercase transition-all duration-300">
-              Download CV
-              ↓
+              Download CV ↓
             </button>
             <a href="https://github.com/Armin1723" target="blank">
               <svg
@@ -55,7 +101,48 @@ const page = () => {
         </div>
         <div className="image">image</div>
       </div>
-      <Numbers/>
+
+      <div className="numbers grid grid-cols-2 md:grid-cols-4 space-y-4 py-4 place-items-stretch">
+        <div className="exp flex items-center gap-2 justify-center">
+          <div className="text-3xl font-extrabold">
+            <CountUp end={2} duration={3} />
+            <span>+</span>
+          </div>
+          <p className="text-xs font-extralight">
+            Years of <br /> Experience
+          </p>
+        </div>
+
+        <div className="exp flex items-center gap-2 justify-center">
+          <div className="text-3xl font-extrabold">
+            <CountUp end={12} duration={3} />
+            <span>+</span>
+          </div>
+          <p className="text-xs font-extralight">
+            Projects <br /> Completed
+          </p>
+        </div>
+
+        <div className="exp flex items-center gap-2 justify-center ">
+          <div className="text-3xl font-extrabold">
+            <CountUp end={12} duration={3} />
+            <span>+</span>
+          </div>
+          <p className="text-xs font-extralight">
+            Technologies <br /> Mastered
+          </p>
+        </div>
+
+        <div className="exp flex items-center gap-2 justify-center">
+          <div className="text-3xl font-extrabold">
+            <CountUp end={200} duration={3} />
+            <span>+</span>
+          </div>
+          <p className="text-xs font-extralight">
+            Code <br /> Commits
+          </p>
+        </div>
+      </div>
     </section>
   );
 };
