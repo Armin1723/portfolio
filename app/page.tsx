@@ -27,21 +27,21 @@ const page = () => {
         opacity: 0,
         ease: "power2.in",
       });
-      tl.from('.image',{
-        x : 36,
-        opacity : 0,
-        delay : 0
-      })
-      tl.from('.interactions',{
-        opacity : 0,
-        scale : 0.5
-      })
-      tl.from('.numbers',{
-        y : 24,
-        opacity : 0,
-        stagger : 2,
-        delay : -2
-      })
+      tl.from(".image", {
+        x: 36,
+        opacity: 0,
+        delay: 0,
+      });
+      tl.from(".interactions", {
+        opacity: 0,
+        scale: 0.5,
+      });
+      tl.from(".exp", {
+        y: 24,
+        opacity: 0,
+        stagger: 0.3,
+        delay: -2,
+      });
     },
     { scope: container }
   );
@@ -99,14 +99,27 @@ const page = () => {
             </a>
           </div>
         </div>
-        <div className="image">image</div>
+        <div className="image">
+          <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className="md:w-[348px] md:h-[348px] aspect-square w-[298px] h-[298px] object-cover rounded-full">
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style={{ stopColor: '#01fe98', stopOpacity: 1 }} />
+                <stop offset="100%" style={{ stopColor: '#01fe98', stopOpacity: 0.5 }} />
+              </linearGradient>
+            </defs>
+            {/* <circle cx="100" cy="100" r="95" stroke="url(#gradient)" strokeWidth="2" fill="none" /> */}
+            <circle cx="100" cy="100" r="85" stroke="#01fe98" strokeWidth="2" fill="none" strokeDasharray="5,5" />
+            <circle cx="100" cy="100" r="75" stroke="#01fe98" strokeWidth="2" fill="none" strokeDasharray="10,5" />
+            {/* <circle cx="100" cy="100" r="70" stroke="none" fill="url(#gradient)" opacity="0.1" /> */}
+          </svg>
+
+        </div>
       </div>
 
       <div className="numbers grid grid-cols-2 md:grid-cols-4 space-y-4 py-4 place-items-stretch">
         <div className="exp flex items-center gap-2 justify-center">
           <div className="text-3xl font-extrabold">
-            <CountUp end={2} duration={3} />
-            <span>+</span>
+            <CountUp start={0} end={2} duration={3} suffix={"+"} delay={1} />
           </div>
           <p className="text-xs font-extralight">
             Years of <br /> Experience
@@ -115,8 +128,7 @@ const page = () => {
 
         <div className="exp flex items-center gap-2 justify-center">
           <div className="text-3xl font-extrabold">
-            <CountUp end={12} duration={3} />
-            <span>+</span>
+            <CountUp start={0} end={12} duration={3} suffix={"+"} delay={1} />
           </div>
           <p className="text-xs font-extralight">
             Projects <br /> Completed
@@ -125,8 +137,7 @@ const page = () => {
 
         <div className="exp flex items-center gap-2 justify-center ">
           <div className="text-3xl font-extrabold">
-            <CountUp end={12} duration={3} />
-            <span>+</span>
+            <CountUp start={0} end={12} duration={3} suffix={"+"} delay={1} />
           </div>
           <p className="text-xs font-extralight">
             Technologies <br /> Mastered
@@ -135,8 +146,7 @@ const page = () => {
 
         <div className="exp flex items-center gap-2 justify-center">
           <div className="text-3xl font-extrabold">
-            <CountUp end={200} duration={3} />
-            <span>+</span>
+            <CountUp start={0} end={200} duration={3} suffix={"+"} delay={1} />
           </div>
           <p className="text-xs font-extralight">
             Code <br /> Commits
