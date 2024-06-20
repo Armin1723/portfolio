@@ -1,6 +1,8 @@
 "use client";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import Image from "next/image";
+import Link from "next/link";
 import React, { useRef } from "react";
 import CountUp from "react-countup";
 
@@ -28,38 +30,62 @@ const page = () => {
         ease: "power2.in",
       });
       tl.from(".image", {
-        x: 36,
+        x: 48,
         opacity: 0,
+        duration: 2,
         delay: 0,
+        ease: "easeInOut",
       });
       tl.from(".interactions", {
         opacity: 0,
         scale: 0.5,
       });
+      tl.from('.icons',{
+        opacity: 0,
+        scale: 0.2,
+        stagger: 0.3,
+      })
       tl.from(".exp", {
         y: 24,
         opacity: 0,
         stagger: 0.3,
         delay: -2,
       });
+      gsap.from(".circle2", {
+        rotate: 360,
+        duration: 26,
+        repeat: -1,
+        transformOrigin: "center",
+        yoyo: true,
+        ease: "none",
+      });
+      gsap.from(".circle3", {
+        rotate: -360,
+        duration: 26,
+        repeat: -1,
+        transformOrigin: "center",
+        yoyo: true,
+        // strokeDashArray: ['15 120 25 25', '16 25 92 72', '4 250 22 22'],
+        ease: "easeInOut",
+      });
     },
     { scope: container }
   );
   return (
     <section className="w-[100vw] lg:w-[70vw] px-6 lg:px-12" ref={container}>
-      <div className="hero flex h-[65vh] flex-row justify-between items-center max-sm:flex-col-reverse">
-        <div className="details max-lg:px-2 flex items-left flex-col justify-center md:w-1/2">
+      <div className="hero flex h-[65vh] flex-row justify-evenly md:justify-between gap-8 items-center max-sm:flex-col-reverse">
+        <div className="details max-lg:p-2 max-lg:mt-2 flex items-left flex-col justify-center md:w-1/2">
           <div className="overflow-hidden">
             <p className="line1 text-xs ">Software Developer</p>
           </div>
-          <div className=" text-4xl overflow-hidden font-bold tracking-wider">
+          <div className="text-4xl overflow-hidden font-bold tracking-wider">
             <p className="line2 py-1">Hello I'm</p>
           </div>
-          <div className=" text-5xl overflow-hidden text-neon-green font-bold tracking-wider">
+          <div className="text-5xl overflow-hidden text-neon-green font-bold tracking-wider">
             <p className="line3 py-1">Uzair Alam</p>
           </div>
           <div className="overflow-hidden font-thin text-xs leading-6">
-            <p className="description py-1">
+            <p className="description py-1 text-wrap">
               I excel at creating MERN stack websites along with expertise in
               NextJS.
             </p>
@@ -68,12 +94,12 @@ const page = () => {
             <button className="px-4 py-1 select-none rounded-xl border-2 border-neon-green text-neon-green mr-4 hover:bg-neon-green hover:text-gray-900 uppercase transition-all duration-300">
               Download CV ↓
             </button>
-            <a href="https://github.com/Armin1723" target="blank">
+            <Link href="https://github.com/Armin1723" target="blank">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
                 id="Github"
-                className="h-6 w-6 hover:opacity-75 rounded-full cursor-pointer"
+                className="icons h-6 w-6 hover:opacity-75 rounded-full cursor-pointer"
               >
                 <path
                   fill="#01fe98"
@@ -81,14 +107,14 @@ const page = () => {
                   className="color5c6bc0 svgShape"
                 ></path>
               </svg>
-            </a>
+            </Link>
 
-            <a href="https://linkedin.com/in/uzair1723" target="blank">
+            <Link href="https://linkedin.com/in/uzair1723" target="blank">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 5 1036 990"
                 id="Linkedin"
-                className="h-6 w-6 hover:opacity-75 cursor-pointer "
+                className="icons h-6 w-6 hover:opacity-75 cursor-pointer "
               >
                 <path
                   d="M0 120c0-33.334 11.667-60.834 35-82.5C58.333 15.833 88.667 5 126 5c36.667 0 66.333 10.666 89 32 23.333 22 35 50.666 35 86 0 32-11.333 58.666-34 80-23.333 22-54 33-92 33h-1c-36.667 0-66.333-11-89-33S0 153.333 0 120zm13 875V327h222v668H13zm345 0h222V622c0-23.334 2.667-41.334 8-54 9.333-22.667 23.5-41.834 42.5-57.5 19-15.667 42.833-23.5 71.5-23.5 74.667 0 112 50.333 112 151v357h222V612c0-98.667-23.333-173.5-70-224.5S857.667 311 781 311c-86 0-153 37-201 111v2h-1l1-2v-95H358c1.333 21.333 2 87.666 2 199 0 111.333-.667 267.666-2 469z"
@@ -96,30 +122,86 @@ const page = () => {
                   className="color000000 svgShape"
                 ></path>
               </svg>
-            </a>
+            </Link>
+
+            <Link href="https://leetcode.com/u/uzair1723" target="blank">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                enableBackground="new 0 0 24 24"
+                viewBox="0 0 24 24"
+                id="Leetcode"
+                className="icons h-6 w-6 hover:opacity-75 cursor-pointer "
+              >
+                <path
+                  d="M22,14.355c0-0.742-0.564-1.346-1.26-1.346H10.676c-0.696,0-1.26,0.604-1.26,1.346s0.563,1.346,1.26,1.346H20.74C21.436,15.702,22,15.098,22,14.355z"
+                  fill="#01fe98"
+                  className="color000000 svgShape"
+                ></path>
+                <path
+                  d="M3.482,18.187l4.313,4.361C8.768,23.527,10.113,24,11.598,24c1.485,0,2.83-0.512,3.805-1.494l2.588-2.637c0.51-0.514,0.492-1.365-0.039-1.9c-0.531-0.535-1.375-0.553-1.884-0.039l-2.676,2.607c-0.462,0.467-1.102,0.662-1.809,0.662s-1.346-0.195-1.81-0.662l-4.298-4.363c-0.463-0.467-0.696-1.15-0.696-1.863c0-0.713,0.233-1.357,0.696-1.824l4.285-4.38c0.463-0.467,1.116-0.645,1.822-0.645s1.346,0.195,1.809,0.662l2.676,2.606c0.51,0.515,1.354,0.497,1.885-0.038c0.531-0.536,0.549-1.387,0.039-1.901l-2.588-2.636c-0.649-0.646-1.471-1.116-2.392-1.33l-0.034-0.007l2.447-2.503c0.512-0.514,0.494-1.366-0.037-1.901c-0.531-0.535-1.376-0.552-1.887-0.038L3.482,10.476C2.509,11.458,2,12.813,2,14.311C2,15.809,2.509,17.207,3.482,18.187z"
+                  fill="#01fe98"
+                  className="color000000 svgShape"
+                ></path>
+              </svg>
+            </Link>
           </div>
         </div>
-        <div className="image">
-          <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className="md:w-[348px] md:h-[348px] aspect-square w-[298px] h-[298px] object-cover rounded-full">
+
+        <div className="image select-none relative aspect-square md:w-[280px] md:h-[280px] w-[200px] h-[200px] flex items-center justify-center max-lg:mr-12 max-sm:mr-0 mix-blend-lighten">
+          <Image
+            src="/assets/profile.png"
+            priority
+            quality={100}
+            alt=""
+            sizes="(min-width: 768px) 180px, 208px"
+            fill
+            className="rounded-full object-contain "
+          />
+          <svg
+            width="200"
+            height="200"
+            viewBox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg"
+            className="frame absolute flex items-center justify-center md:w-[348px] md:h-[348px] aspect-square w-[248px] h-[248px] object-cover rounded-full"
+          >
             <defs>
               <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style={{ stopColor: '#01fe98', stopOpacity: 1 }} />
-                <stop offset="100%" style={{ stopColor: '#01fe98', stopOpacity: 0.5 }} />
+                <stop
+                  offset="100%"
+                  style={{ stopColor: "#01fe98", stopOpacity: 0.5 }}
+                />
               </linearGradient>
             </defs>
-            {/* <circle cx="100" cy="100" r="95" stroke="url(#gradient)" strokeWidth="2" fill="none" /> */}
-            <circle cx="100" cy="100" r="85" stroke="#01fe98" strokeWidth="2" fill="none" strokeDasharray="5,5" />
-            <circle cx="100" cy="100" r="75" stroke="#01fe98" strokeWidth="2" fill="none" strokeDasharray="10,5" />
-            {/* <circle cx="100" cy="100" r="70" stroke="none" fill="url(#gradient)" opacity="0.1" /> */}
+            <circle
+              cx="100"
+              cy="100"
+              r="90"
+              stroke="#01fe98"
+              strokeWidth="1"
+              fill="none"
+              strokeDasharray="5 5 2"
+              className="circle2"
+            />
+            <circle
+              cx="100"
+              cy="100"
+              r="85"
+              stroke="#01fe98"
+              strokeWidth="1"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+              strokeDasharray="5 10 4"
+              className="circle3"
+            />
           </svg>
-
         </div>
       </div>
 
-      <div className="numbers grid grid-cols-2 md:grid-cols-4 space-y-4 py-4 place-items-stretch">
+      <div className="numbers grid grid-cols-2 md:grid-cols-4 space-y-2 py-1 place-items-stretch">
         <div className="exp flex items-center gap-2 justify-center">
           <div className="text-3xl font-extrabold">
-            <CountUp start={0} end={2} duration={3} suffix={"+"} delay={1} />
+            <CountUp start={0} end={2} duration={4} suffix={"+"} delay={4} />
           </div>
           <p className="text-xs font-extralight">
             Years of <br /> Experience
@@ -128,7 +210,7 @@ const page = () => {
 
         <div className="exp flex items-center gap-2 justify-center">
           <div className="text-3xl font-extrabold">
-            <CountUp start={0} end={12} duration={3} suffix={"+"} delay={1} />
+            <CountUp start={0} end={12} duration={4} suffix={"+"} delay={4} />
           </div>
           <p className="text-xs font-extralight">
             Projects <br /> Completed
@@ -137,7 +219,7 @@ const page = () => {
 
         <div className="exp flex items-center gap-2 justify-center ">
           <div className="text-3xl font-extrabold">
-            <CountUp start={0} end={12} duration={3} suffix={"+"} delay={1} />
+            <CountUp start={0} end={12} duration={4} suffix={"+"} delay={4} />
           </div>
           <p className="text-xs font-extralight">
             Technologies <br /> Mastered
@@ -146,7 +228,7 @@ const page = () => {
 
         <div className="exp flex items-center gap-2 justify-center">
           <div className="text-3xl font-extrabold">
-            <CountUp start={0} end={200} duration={3} suffix={"+"} delay={1} />
+            <CountUp start={0} end={200} duration={4} suffix={"+"} delay={4} />
           </div>
           <p className="text-xs font-extralight">
             Code <br /> Commits

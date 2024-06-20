@@ -12,9 +12,9 @@ const Navbar = () => {
       <div className="navRight max-sm:hidden select-none">
         {navbarLinks.map((link, index) => {
           const isActive = pathname.includes(link.href) ? 'text-neon-green border-b-2 border-neon-green' : ''
-          const specialButton = link.name === 'Hire Me' ? 'bg-neon-green text-zinc-900 rounded-2xl hover:text-black hover:border-b-0 font-semibold' : ''
+          const specialButton = link.name === 'Hire Me' ? 'bg-neon-green text-zinc-900 rounded-2xl hover:text-zinc-600 hover:border-b-0 font-semibold' : ''
           return (
-            <Link key={index} href={link.href} className={`text-xs md:mx-3 ${specialButton} ${isActive} p-2 hover:text-neon-green transition-all`}>{link.name}</Link>  
+            <Link key={index} href={link.href} className={`text-xs md:mx-3 ${isActive} p-2 ${!specialButton && 'hover:text-neon-green'} ${specialButton} transition-all`}>{link.name}</Link>  
           )}
         )}
       </div>
