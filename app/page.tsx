@@ -65,7 +65,6 @@ const page = () => {
         repeat: -1,
         transformOrigin: "center",
         yoyo: true,
-        // strokeDashArray: ['15 120 25 25', '16 25 92 72', '4 250 22 22'],
         ease: "easeInOut",
       });
     },
@@ -153,7 +152,7 @@ const page = () => {
             priority
             quality={100}
             alt=""
-            sizes="(min-width: 768px) 180px, 208px"
+            sizes="(min-width: 768px) 220px, 258px"
             fill
             className="rounded-full object-contain "
           />

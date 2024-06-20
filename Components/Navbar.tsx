@@ -1,8 +1,10 @@
 'use client'
 import { navbarLinks } from '@/public/utils'
+import { Ham } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
+import HamMenu from './HamMenu'
 
 const Navbar = () => {
   const pathname = usePathname()
@@ -18,11 +20,7 @@ const Navbar = () => {
           )}
         )}
       </div>
-      <div className='hidden max-sm:flex flex-col items-end items-right opacity-80'>
-        <p className='translate-y-4 scale-x-[5]'>-</p>
-        <p className='scale-x-[3] translate-x-1'>-</p>
-        <p className='-translate-y-4 translate-x-[0.15rem] scale-x-[4]'>-</p>
-      </div>
+      <HamMenu />
     </div>
   )
 }
