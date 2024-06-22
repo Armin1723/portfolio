@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/Components/Navbar";
+import NextTopLoader from "nextjs-toploader";
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body
         className={`${jetBrainsMono.className} flex flex-col items-center justify-between w-screen min-h-screen bg-zinc-900 text-white selection:bg-[#78fdc8] selection:text-zinc-900`}
       >
+        <NextTopLoader color="#01fe98" height={2}/>
         <Navbar />
         <main className="flex-grow">{children}</main>
       </body>

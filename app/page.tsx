@@ -1,4 +1,5 @@
 "use client";
+import Stairs from "@/Components/Stairs";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Image from "next/image";
@@ -15,6 +16,7 @@ const page = () => {
       tl.from(".line1", {
         y: 24,
         opacity: 0,
+        delay: 2,
       });
       tl.from(".line2", {
         y: 24,
@@ -33,6 +35,7 @@ const page = () => {
         x: 48,
         opacity: 0,
         duration: 2,
+        scale: 0.2,
         delay: 0,
         ease: "easeInOut",
       });
@@ -71,8 +74,9 @@ const page = () => {
     { scope: container }
   );
   return (
-    <section className="w-[100vw] lg:w-[70vw] px-6 lg:px-12" ref={container}>
-      <div className="hero flex h-[65vh] flex-row justify-evenly md:justify-between gap-8 items-center max-sm:flex-col-reverse">
+    <section className="w-[100vw] lg:w-[70vw]" ref={container}>
+      <Stairs />
+      <div className="hero flex h-[65vh] flex-row justify-evenly px-6 lg:px-12 md:justify-between gap-8 items-center max-sm:flex-col-reverse">
         <div className="details max-lg:p-2 max-lg:mt-2 flex items-left flex-col justify-center md:w-1/2">
           <div className="overflow-hidden">
             <p className="line1 text-xs ">Software Developer</p>
@@ -200,7 +204,7 @@ const page = () => {
       <div className="numbers grid grid-cols-2 md:grid-cols-4 space-y-2 py-1 place-items-stretch">
         <div className="exp flex items-center gap-2 justify-center">
           <div className="text-3xl font-extrabold">
-            <CountUp start={0} end={2} duration={4} suffix={"+"} delay={4} />
+            <CountUp start={0} end={2} duration={4} suffix={"+"} delay={6} />
           </div>
           <p className="text-xs font-extralight">
             Years of <br /> Experience
@@ -209,7 +213,7 @@ const page = () => {
 
         <div className="exp flex items-center gap-2 justify-center">
           <div className="text-3xl font-extrabold">
-            <CountUp start={0} end={12} duration={4} suffix={"+"} delay={4} />
+            <CountUp start={0} end={12} duration={4} suffix={"+"} delay={6} />
           </div>
           <p className="text-xs font-extralight">
             Projects <br /> Completed
@@ -218,7 +222,7 @@ const page = () => {
 
         <div className="exp flex items-center gap-2 justify-center ">
           <div className="text-3xl font-extrabold">
-            <CountUp start={0} end={12} duration={4} suffix={"+"} delay={4} />
+            <CountUp start={0} end={12} duration={4} suffix={"+"} delay={6} />
           </div>
           <p className="text-xs font-extralight">
             Technologies <br /> Mastered
@@ -227,7 +231,7 @@ const page = () => {
 
         <div className="exp flex items-center gap-2 justify-center">
           <div className="text-3xl font-extrabold">
-            <CountUp start={0} end={200} duration={4} suffix={"+"} delay={4} />
+            <CountUp start={0} end={200} duration={4} suffix={"+"} delay={6} />
           </div>
           <p className="text-xs font-extralight">
             Code <br /> Commits
