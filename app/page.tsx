@@ -94,9 +94,9 @@ const page = () => {
             </p>
           </div>
           <div className="interactions mt-4 flex gap-4 items-center">
-            <button className="px-4 py-1 select-none rounded-xl border-2 border-neon-green text-neon-green mr-4 hover:bg-neon-green hover:text-gray-900 uppercase transition-all duration-300">
+            <a href='/assets/Resume.pdf' target="_blank" download="Resume-UzairAlam-SoftwareDeveloper" className="px-4 py-1 select-none rounded-xl border-2 border-neon-green text-neon-green mr-4 hover:bg-neon-green hover:text-gray-900 uppercase transition-all duration-300">
               Download CV ↓
-            </button>
+            </a>
             <Link href="https://github.com/Armin1723" target="blank">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

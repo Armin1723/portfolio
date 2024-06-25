@@ -20,3 +20,10 @@ export const navbarLinks = [
         href: '/hireme'
     }
 ]
+
+export const formatDate = (date: Date) => {
+    const monthsName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    const month = monthsName[date.getMonth()]
+    const year = date.getFullYear()
+    return `${month}/${year}`
+}
