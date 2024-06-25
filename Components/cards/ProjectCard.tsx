@@ -35,11 +35,11 @@ const ProjectCard = ({ index, project }: projectProp) => {
           project.start_date
         )} - ${formatDate(project.end_date)})`}</p>
       </div>
-      <div className="flex gap-2 mr-4 select-none">
+      <div className="flex flex-wrap gap-2 mr-4 select-none">
         {project.techs.map((tech, index) => (
           <p
             key={index}
-            className="text-[0.5rem] font-semibold cursor-pointer hover:opacity-80 bg-neon-green text-black p-1 rounded-md"
+            className="text-[0.5rem] flex items-center justify-center font-semibold cursor-pointer hover:opacity-80 bg-neon-green text-black p-1 rounded-md"
           >
             {tech}
           </p>

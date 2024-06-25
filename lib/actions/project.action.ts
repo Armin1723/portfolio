@@ -5,17 +5,17 @@ import Project from "../models/project.model"
 
 export const createProject = async () => {
     await connectToDB()
-    const title = 'Weatherizy'
+    const title = 'Task-Venture'
     const project1 = await Project.findOne({ title: title })
     if(project1) return console.log("Project already exists")
     const project = await Project.create({
         title: title,
-        description: "A React based Weather web app that uses OpenWeatherMap API to fetch weather data combined with dynamic styling and use of geolocation API.",
-        code_link: "https://github.com/Armin1723/weather-to-go.git",
-        live_link: "https://weatherizy.netlify.app",
-        techs: ["ReactJS", "NodeJS", "OpenWeatherAPI", "MongoDB", "Express", "TailwindCSS","Geolocation API"],
-        start_date: new Date("2023-02-10"),
-        end_date: new Date("2023-03-01")
+        description: "A React project that demonstrates the use of pdfme library for PDF manipulation in React",
+        code_link: "https://github.com/Armin1723/task-venture.git",
+        live_link: "https://task-venture.netlify.app/",
+        techs: ["ReactJS", "NodeJS", "pdfme", "React Loaders", "TailwindCSS"],
+        start_date: new Date("2024-03-24"),
+        end_date: new Date("2024-03-26")
     })
 }
 
