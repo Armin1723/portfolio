@@ -5,14 +5,14 @@ import { json } from 'stream/consumers'
 
 interface props{
     url: string,
-    page: number,
+    page: any,
     hasMore: boolean
 }
 
 const Pagination = ({ url, page, hasMore } : props) => {
     const router = useRouter()
     const handleNavigation = (method : string) =>{
-        const newPage = method === 'next' ? parseInt(page.toString()) + 1 : Math.max(1, page - 1)
+        const newPage = method === 'next' ? parseInt(page) + 1 : Math.max(1, page - 1)
         router.push(`${url}?page=${newPage}`)
     }
   return (
