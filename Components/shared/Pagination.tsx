@@ -1,6 +1,7 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import React from 'react'
+import { json } from 'stream/consumers'
 
 interface props{
     url: string,
@@ -11,7 +12,7 @@ interface props{
 const Pagination = ({ url, page, hasMore } : props) => {
     const router = useRouter()
     const handleNavigation = (method : string) =>{
-        const newPage = method === 'next' ? parseInt(page) + 1 : Math.max(1, parseInt(page) - 1)
+        const newPage = method === 'next' ? parseInt(page.toString()) + 1 : Math.max(1, page - 1)
         router.push(`${url}?page=${newPage}`)
     }
   return (

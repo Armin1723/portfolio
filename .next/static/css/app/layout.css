@@ -1916,10 +1916,6 @@ video {
   cursor: not-allowed;
 }
 
-.disabled\:bg-transparent:disabled {
-  background-color: transparent;
-}
-
 .disabled\:opacity-50:disabled {
   opacity: 0.5;
 }

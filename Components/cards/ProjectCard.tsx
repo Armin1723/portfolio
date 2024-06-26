@@ -15,7 +15,7 @@ interface projectProp {
 }
 const ProjectCard = ({ index, project }: projectProp) => {
   return (
-    <div className="flex flex-col p-2 border-b border-white/20 gap-2">
+    <div className="projectCard flex flex-col p-2 border-b border-white/20 gap-2">
       <div className="text-5xl flex justify-between items-center mr-24 font-extrabold cursor-pointer transition-all duration-700 ">
         <p className="text-transparent text-outline">{index+1}</p>
         <a href={project.live_link} target='_blank' className="arrowContainer flex items-center group hover:bg-neon-green/60 rounded-full p-2">
