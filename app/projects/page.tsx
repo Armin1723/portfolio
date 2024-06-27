@@ -30,7 +30,7 @@ const projects = async ({ searchParams } : props ) =>{
           <ProjectCard key={index} index={index} project={project}/>
         ))}
       </div>
-      {(results?.hasMore || searchParams?.page != 1) && <Pagination url={'/projects'} page={searchParams.page ? searchParams.page : 1} hasMore={results?.hasMore || false}/> }
+      {/* {(results?.hasMore || searchParams?.page != 1) && <Pagination url={'/projects'} page={searchParams.page ? searchParams.page : 1} hasMore={results?.hasMore || false}/> } */}
     </div>
   );
 };
