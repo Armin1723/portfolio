@@ -1,7 +1,6 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import React from 'react'
-import { json } from 'stream/consumers'
 
 interface props{
     url: string,
@@ -13,7 +12,7 @@ const Pagination = ({ url, page, hasMore } : props) => {
     const router = useRouter()
     const handleNavigation = (method : string) =>{
         const newPage = method === 'next' ? parseInt(page) + 1 : Math.max(1, page - 1)
-        router.push(`${url}?page=${newPage}`)
+        router.push(`${url}?page=${newPage}`) 
     }
   return (
     <div className='w-full flex items-center justify-center gap-6'>
