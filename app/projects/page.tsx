@@ -20,7 +20,7 @@ interface projectProp {
   end_date: Date
 }
 
-const projects = async ({ searchParams } : props ) =>{
+const projects = async ({ searchParams } : props ) => {
   const results = await fetchProjects(searchParams.page ? searchParams.page : 1)
   return (
     <div className="w-[100vw] lg:w-[70vw] grid items-center h-[90vh]">

@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/projects/page": [
+    "/education/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/projects/page.js"
+      "static/chunks/app/education/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -16,15 +16,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/error.js"
     ],
-    "/education/page": [
+    "/projects/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/education/page.js"
-    ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/chunks/app/projects/page.js"
     ]
   }
 }
