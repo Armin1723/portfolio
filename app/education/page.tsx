@@ -26,7 +26,7 @@ const page = () => {
   return (
     <div className="w-[100vw] lg:w-[70vw]">
       <Stairs />
-      <div ref={container} className="overflow-y-scroll overflow-x-visible max-h-[85vh] custom-scrollbar">
+      <div ref={container} className="z-[-10] overflow-y-scroll overflow-x-visible max-h-[85vh] custom-scrollbar">
         <ul className=" relative border-s-2 border-neon-green min-h-content mx-12 mt-12">
           <li className="mb-6 ms-6 ">
             <span className="graphic absolute flex items-center justify-center w-6 h-6 bg-neon-green rounded-full -start-3 ring-8 ring-green-600/60">
