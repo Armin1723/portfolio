@@ -1,84 +1,30 @@
 {
   "pages": {
-    "/_not-found/page": [
-      "static/chunks/webpack-37df128a72d73095.js",
-      "static/chunks/fd9d1056-51face16839d2cb0.js",
-      "static/chunks/23-789f8eb5b1568a8a.js",
-      "static/chunks/main-app-ebcc2a46bba8effe.js",
-      "static/chunks/app/_not-found/page-e0555cf0d221ee88.js"
+    "/projects/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/projects/page.js"
     ],
     "/layout": [
-      "static/chunks/webpack-37df128a72d73095.js",
-      "static/chunks/fd9d1056-51face16839d2cb0.js",
-      "static/chunks/23-789f8eb5b1568a8a.js",
-      "static/chunks/main-app-ebcc2a46bba8effe.js",
-      "static/css/215be3af5ee2f318.css",
-      "static/chunks/138-1fd512784497c019.js",
-      "static/chunks/299-836d726161b98986.js",
-      "static/chunks/app/layout-58f6df02800ddc90.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
     ],
     "/error": [
-      "static/chunks/webpack-37df128a72d73095.js",
-      "static/chunks/fd9d1056-51face16839d2cb0.js",
-      "static/chunks/23-789f8eb5b1568a8a.js",
-      "static/chunks/main-app-ebcc2a46bba8effe.js",
-      "static/chunks/app/error-b02a1aba2a140dc5.js"
-    ],
-    "/contact/page": [
-      "static/chunks/webpack-37df128a72d73095.js",
-      "static/chunks/fd9d1056-51face16839d2cb0.js",
-      "static/chunks/23-789f8eb5b1568a8a.js",
-      "static/chunks/main-app-ebcc2a46bba8effe.js",
-      "static/chunks/c15bf2b0-c5f2ab0c4ce668d5.js",
-      "static/chunks/19-42e538b4058b71d9.js",
-      "static/chunks/app/contact/page-9e9674492243fd72.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/error.js"
     ],
     "/education/page": [
-      "static/chunks/webpack-37df128a72d73095.js",
-      "static/chunks/fd9d1056-51face16839d2cb0.js",
-      "static/chunks/23-789f8eb5b1568a8a.js",
-      "static/chunks/main-app-ebcc2a46bba8effe.js",
-      "static/chunks/c15bf2b0-c5f2ab0c4ce668d5.js",
-      "static/chunks/19-42e538b4058b71d9.js",
-      "static/chunks/app/education/page-41bacef3c303c0cd.js"
-    ],
-    "/hireme/page": [
-      "static/chunks/webpack-37df128a72d73095.js",
-      "static/chunks/fd9d1056-51face16839d2cb0.js",
-      "static/chunks/23-789f8eb5b1568a8a.js",
-      "static/chunks/main-app-ebcc2a46bba8effe.js",
-      "static/chunks/c15bf2b0-c5f2ab0c4ce668d5.js",
-      "static/chunks/19-42e538b4058b71d9.js",
-      "static/chunks/app/hireme/page-a17bcf1c4e6ad8c9.js"
-    ],
-    "/projects/page": [
-      "static/chunks/webpack-37df128a72d73095.js",
-      "static/chunks/fd9d1056-51face16839d2cb0.js",
-      "static/chunks/23-789f8eb5b1568a8a.js",
-      "static/chunks/main-app-ebcc2a46bba8effe.js",
-      "static/chunks/c15bf2b0-c5f2ab0c4ce668d5.js",
-      "static/chunks/19-42e538b4058b71d9.js",
-      "static/chunks/app/projects/page-0ef9c0e11632d8eb.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/education/page.js"
     ],
     "/page": [
-      "static/chunks/webpack-37df128a72d73095.js",
-      "static/chunks/fd9d1056-51face16839d2cb0.js",
-      "static/chunks/23-789f8eb5b1568a8a.js",
-      "static/chunks/main-app-ebcc2a46bba8effe.js",
-      "static/chunks/c15bf2b0-c5f2ab0c4ce668d5.js",
-      "static/chunks/19-42e538b4058b71d9.js",
-      "static/chunks/138-1fd512784497c019.js",
-      "static/chunks/218-34495cf1559a62be.js",
-      "static/chunks/app/page-df3ce762ec1ae558.js"
-    ],
-    "/resume/page": [
-      "static/chunks/webpack-37df128a72d73095.js",
-      "static/chunks/fd9d1056-51face16839d2cb0.js",
-      "static/chunks/23-789f8eb5b1568a8a.js",
-      "static/chunks/main-app-ebcc2a46bba8effe.js",
-      "static/chunks/c15bf2b0-c5f2ab0c4ce668d5.js",
-      "static/chunks/19-42e538b4058b71d9.js",
-      "static/chunks/app/resume/page-c6fe8e95f82e34d4.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
     ]
   }
 }
