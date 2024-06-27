@@ -28,7 +28,7 @@ const page = () => {
       <Stairs />
       <div ref={container} className="z-[-10] overflow-y-scroll overflow-x-visible max-h-[85vh] custom-scrollbar">
         <ul className=" relative border-s-2 border-neon-green min-h-content mx-12 mt-12">
-          <li className="mb-6 ms-6 ">
+          <li className="mb-6 ms-8 max-sm:ms-6">
             <span className="graphic absolute flex items-center justify-center w-6 h-6 bg-neon-green rounded-full -start-3 ring-8 ring-green-600/60">
               <svg
                 className="w-3 h-3"
@@ -83,7 +83,7 @@ const page = () => {
                 <AccordionContent>
                   <a
                     href="#"
-                    className="inline-flex items-center px-3 py-1.5 text-sm font-medium  border border-gray-200 rounded-lg hover:bg-neon-green hover:text-black transition-all duration-300 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+                    className="inline-flex items-center px-3 py-1.5 text-sm font-medium  border border-gray-200 rounded-lg hover:bg-neon-green hover:text-black transition-all duration-300 focus:z-10 focus:outline-none "
                   >
                     <svg
                       className="w-3.5 h-3.5 me-2.5"
@@ -102,7 +102,7 @@ const page = () => {
             </Accordion>
           </li>
 
-          <li className="mb-6 ms-6">
+          <li className="mb-6 ms-8 max-sm:ms-6">
             <span className="graphic absolute flex items-center justify-center w-6 h-6 bg-neon-green rounded-full -start-3 ring-8 ring-green-600/60">
               <svg
                 className="w-3 h-3"
@@ -135,7 +135,7 @@ const page = () => {
                 <AccordionContent>
                   <a
                     href="#"
-                    className="inline-flex items-center px-3 py-1.5 text-sm font-medium  border border-gray-200 rounded-lg hover:bg-neon-green hover:text-black transition-all duration-300 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+                    className="inline-flex items-center px-3 py-1.5 text-sm font-medium  border border-gray-200 rounded-lg hover:bg-neon-green hover:text-black transition-all duration-300 focus:z-10 focus:outline-none "
                   >
                     <svg
                       className="w-3.5 h-3.5 me-2.5"
@@ -154,7 +154,7 @@ const page = () => {
             </Accordion>
           </li>
 
-          <li className="mb-0 ms-6">
+          <li className="mb-0 ms-8 max-sm:ms-6">
             <span className="graphic absolute flex items-center justify-center w-6 h-6 bg-neon-green rounded-full -start-3 ring-8 ring-green-600/60">
               <svg
                 className="w-3 h-3"
@@ -202,7 +202,7 @@ const page = () => {
               <AccordionContent>
                   <a
                     href="#"
-                    className="inline-flex items-center px-3 py-1.5 text-sm font-medium  border border-gray-200 rounded-lg hover:bg-neon-green hover:text-black transition-all duration-300 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+                    className="inline-flex items-center px-3 py-1.5 text-sm font-medium  border border-gray-200 rounded-lg hover:bg-neon-green hover:text-black transition-all duration-300 focus:z-10 focus:outline-none "
                   >
                     <svg
                       className="w-3.5 h-3.5 me-2.5"
