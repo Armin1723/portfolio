@@ -1,5 +1,6 @@
 {
-  "/education/page": "app/education/page.js",
-  "/projects/page": "app/projects/page.js",
-  "/page": "app/page.js"
+  "/sentry-example-page/page": "app/sentry-example-page/page.js",
+  "/page": "app/page.js",
+  "/resume/page": "app/resume/page.js",
+  "/resume/skills/page": "app/resume/skills/page.js"
 }
