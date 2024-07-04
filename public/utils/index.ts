@@ -72,6 +72,27 @@ export const skillsName = [
 
 ]
 
+export const contactPageLinks = [
+    {
+        name: 'Contact',
+        icon: 'ri-phone-fill',
+        value: '+91 8858128030',
+        href: 'tel:+918858128030'
+    },
+    {
+        name: 'Email',
+        icon: 'ri-mail-open-fill',
+        value: 'alam.airuz23@gmail.com',
+        href: 'mailto:alam.airuz23@gmail.com'
+    },
+    {
+        name: 'Address',
+        icon: 'ri-map-pin-2-fill',
+        value: 'Lucknow, India',
+        href: 'https://maps.app.goo.gl/qqbeZSkRuReegpZ97'
+    }
+]
+
 export const formatDate = (date: Date) => {
     const monthsName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     const month = monthsName[date.getMonth()]

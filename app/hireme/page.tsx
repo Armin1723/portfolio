@@ -1,4 +1,4 @@
-import Stairs from '@/Components/Stairs'
+import Stairs from '@/Components/shared/Stairs'
 import React from 'react'
 
 const page = () => {

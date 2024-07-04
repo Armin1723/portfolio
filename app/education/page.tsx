@@ -1,5 +1,5 @@
 "use client";
-import Stairs from "@/Components/Stairs";
+import Stairs from "@/Components/shared/Stairs";
 import {
   Accordion,
   AccordionContent,

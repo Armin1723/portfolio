@@ -1,5 +1,5 @@
 'use client'
-import Stairs from "@/Components/Stairs";
+import Stairs from "@/Components/shared/Stairs";
 import Link from "next/link";
 import { resumeNavLinks } from "@/public/utils";
 import { usePathname } from "next/navigation";

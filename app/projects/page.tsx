@@ -1,7 +1,7 @@
-import Stairs from "@/Components/Stairs";
+import Stairs from "@/Components/shared/Stairs";
 import ProjectCard from "@/Components/cards/ProjectCard";
 import Pagination from "@/Components/shared/Pagination";
-import { fetchProjects } from "@/lib/actions/project.action";
+import { fetchProjects } from "@/lib/actions/project.actions";
 import React from "react";
 
 interface props {

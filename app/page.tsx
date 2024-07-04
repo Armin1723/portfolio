@@ -1,5 +1,5 @@
 "use client";
-import Stairs from "@/Components/Stairs";
+import Stairs from "@/Components/shared/Stairs";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Image from "next/image";

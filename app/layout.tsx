@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import "remixicon/fonts/remixicon.css";
-import Navbar from "@/Components/Navbar";
+import Navbar from "@/Components/shared/Navbar";
 import NextTopLoader from "nextjs-toploader";
+import { Toaster } from "@/Components/ui/toaster";
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({
         <NextTopLoader color="#01fe98" height={2} />
         <Navbar />
         <main className="flex-grow">{children}</main>
+        <Toaster/>
       </body>
     </html>
   );

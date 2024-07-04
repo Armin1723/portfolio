@@ -15,6 +15,9 @@
   .text-outline-4 {
     -webkit-text-stroke: 4px white;
   }
+  .no-focus {
+    @apply focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
+  }
 
   /* Custom Scrollbar */
   .custom-scrollbar::-webkit-scrollbar {
