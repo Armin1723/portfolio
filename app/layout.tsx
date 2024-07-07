@@ -14,6 +14,14 @@ const jetBrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Portfolio of Uzair Alam",
   description: "Portfolio of Uzair Alam",
+  icons: {
+    icon: {
+      url: "/assets/profile.png",
+      sizes: "any",
+      type: "image/png",
+    },
+
+  },
 };
 
 export default function RootLayout({

@@ -17,7 +17,7 @@ export const navbarLinks = [
     },
     {
         name: 'Hire Me',
-        href: '/hireme'
+        href: 'https://www.linkedin.com/in/uzair1723'
     }
 ]
 
