@@ -1,10 +1,35 @@
+'use client'
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import Link from "next/link";
 import React from "react";
 
 const page = () => {
+  const skills = React.useRef<HTMLDivElement>(null);
+  gsap.registerPlugin(useGSAP)
+  useGSAP(()=>{
+    const tl = gsap.timeline()
+    tl.from('.heading',{
+      opacity : 0,
+      duration : 1,
+      delay : 2,
+      scale : 0.5
+    })
+    tl.from('.intro',{
+      opacity : 0,
+      duration : 1,
+      y : 50
+    })
+    tl.from('.contactTiles',{
+      opacity : 0,
+      duration : 1,
+      stagger : 0.1,
+      y : 50
+    })
+  },{scope : skills})
   return (
-    <div className="skills flex flex-col gap-4 md:gap-8 max-lg:justify-evenly justify-evenly h-full">
-      <p className="text-2xl font-extrabold text-center">Introduction</p>
+    <div ref={skills} className="skills flex flex-col gap-4 md:gap-8 max-lg:justify-evenly justify-evenly h-full">
+      <p className="heading text-2xl font-extrabold text-center">Introduction</p>
       <div className="intro font-light text-center text-md md:text-lg">
         A passionate and skilled Web developer that has expertise in building
         web applications and websites. I have a passion for creating
@@ -13,7 +38,7 @@ const page = () => {
         proficiency in programming languages like Java, C++ and Python.
       </div>
       <div className="contactInformation grid grid-cols-1 md:grid-cols-2 place-content-between place-items-baseline max-lg:place-items-center w-full space-y-2 text-xs md:text-md font-extralight">
-        <div className="flex gap-2">
+        <div className="contactTiles flex gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 64 64"
@@ -32,7 +57,7 @@ const page = () => {
             Lucknow, India
           </Link>
         </div>
-        <div className="flex gap-2">
+        <div className="contactTiles flex gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icons h-4 w-4 object-contain rounded-full fill-white font-extrabold"
@@ -49,7 +74,7 @@ const page = () => {
             +91 8858128030
           </Link>
         </div>
-        <div className="flex gap-2 ">
+        <div className="contactTiles flex gap-2 ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icons h-4 w-4 fill-white"
@@ -68,7 +93,7 @@ const page = () => {
             alam.airuz23@gmail.com
           </Link>
         </div>
-        <div className="flex gap-2">
+        <div className="contactTiles flex gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 5 1036 990"
