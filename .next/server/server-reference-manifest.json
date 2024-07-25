@@ -31,24 +31,8 @@
       "layer": {
         "app/projects/page": "rsc"
       }
-    },
-    "51b2374b859d2c0fe573fe1c267721c6362f5c4d": {
-      "workers": {
-        "app/contact/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22D%3A%5C%5CPlayground%5C%5CNext.js%5C%5Cportfolio%5C%5Clib%5C%5Cactions%5C%5Cmessage.actions.ts%22%2C%5B%22%24%24ACTION_0%22%2C%22sendMessage%22%5D%5D%5D&__client_imported__=true!"
-      },
-      "layer": {
-        "app/contact/page": "action-browser"
-      }
-    },
-    "e322d238a6ac501b567d99c31319f7f73129bc0d": {
-      "workers": {
-        "app/contact/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22D%3A%5C%5CPlayground%5C%5CNext.js%5C%5Cportfolio%5C%5Clib%5C%5Cactions%5C%5Cmessage.actions.ts%22%2C%5B%22%24%24ACTION_0%22%2C%22sendMessage%22%5D%5D%5D&__client_imported__=true!"
-      },
-      "layer": {
-        "app/contact/page": "action-browser"
-      }
     }
   },
   "edge": {},
-  "encryptionKey": "ewc4FJV5UIXqUwLEKtUN7QaD3qfWt454+QA+LIZstNQ="
+  "encryptionKey": "8+NcMsfpgjehnpXHbR9QEn5IjnrTRJ611i4f6c9G44Y="
 }
