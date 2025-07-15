@@ -31,11 +31,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script
+        {/* <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4006783634309926"
           crossorigin="anonymous"
-        ></script>
+        ></script> */}
       </head>
       <body
         className={`${jetBrainsMono.className} flex flex-col items-center justify-between w-screen min-h-screen bg-zinc-900 text-white selection:bg-[#78fdc8] selection:text-zinc-900`}
