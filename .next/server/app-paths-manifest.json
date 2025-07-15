@@ -1,7 +1,11 @@
 {
-  "/page": "app/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/projects/page": "app/projects/page.js",
+  "/page": "app/page.js",
+  "/contact/page": "app/contact/page.js",
   "/education/page": "app/education/page.js",
+  "/sentry-example-page/page": "app/sentry-example-page/page.js",
+  "/api/sentry-example-api/route": "app/api/sentry-example-api/route.js",
   "/resume/page": "app/resume/page.js",
   "/resume/skills/page": "app/resume/skills/page.js"
 }
