@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useRef } from "react";
 import CountUp from "react-countup";
+import SEO from "@/Components/SEO";
 
 const page = () => {
   gsap.registerPlugin(useGSAP);
@@ -43,11 +44,11 @@ const page = () => {
         opacity: 0,
         scale: 0.5,
       });
-      tl.from('.icons',{
+      tl.from(".icons", {
         opacity: 0,
         scale: 0.2,
         stagger: 0.3,
-      })
+      });
       tl.from(".exp", {
         y: 24,
         opacity: 0,
@@ -75,6 +76,7 @@ const page = () => {
   );
   return (
     <section className="w-[100vw] lg:w-[70vw]" ref={container}>
+      <SEO />
       <Stairs />
       <div className="hero flex h-[65vh] flex-row justify-evenly px-6 lg:px-12 md:justify-between gap-8 items-center max-sm:flex-col-reverse">
         <div className="details max-lg:p-2 max-lg:mt-2 flex items-left flex-col justify-center md:w-1/2">
@@ -94,7 +96,12 @@ const page = () => {
             </p>
           </div>
           <div className="interactions mt-4 flex gap-4 items-center">
-            <a href='/assets/Resume.pdf' target="_blank" download="Resume-UzairAlam-SoftwareDeveloper" className="px-4 py-1 select-none rounded-xl border-2 border-neon-green text-neon-green mr-4 hover:bg-neon-green hover:text-gray-900 uppercase transition-all duration-300">
+            <a
+              href="/assets/Resume.pdf"
+              target="_blank"
+              download="Resume-UzairAlam-SoftwareDeveloper"
+              className="px-4 py-1 select-none rounded-xl border-2 border-neon-green text-neon-green mr-4 hover:bg-neon-green hover:text-gray-900 uppercase transition-all duration-300"
+            >
               Download CV ↓
             </a>
             <Link href="https://github.com/Armin1723" target="blank">
