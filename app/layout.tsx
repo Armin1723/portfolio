@@ -43,7 +43,7 @@ export default function RootLayout({
         <NextTopLoader color="#01fe98" height={2} />
         <Navbar />
         <main className="flex-grow">{children}</main>
-        <Toaster />
+        <Toaster/>
       </body>
     </html>
   );
