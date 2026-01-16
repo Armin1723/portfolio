@@ -5,6 +5,7 @@ import "remixicon/fonts/remixicon.css";
 import Navbar from "@/Components/shared/Navbar";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "@/Components/ui/toaster";
+import Script from "next/script";
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -36,6 +37,19 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4006783634309926"
           crossorigin="anonymous"
         ></script> */}
+
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=G-MTX57QBKCB`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-MTX57QBKCB');
+          `}
+        </Script>
       </head>
       <body
         className={`${jetBrainsMono.className} flex flex-col items-center justify-between w-screen min-h-screen bg-zinc-900 text-white selection:bg-[#78fdc8] selection:text-zinc-900`}
