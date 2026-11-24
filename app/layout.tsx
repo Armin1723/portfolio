@@ -158,11 +158,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <Script
-          id="structured-data"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+      </head>
+      <body
+        className={`${jetBrainsMono.className} flex flex-col items-center justify-between w-full min-h-screen bg-zinc-950 text-white selection:bg-[#78fdc8] selection:text-zinc-950 overflow-x-hidden`}
+      >
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-MTX57QBKCB"
           strategy="afterInteractive"
@@ -175,10 +178,6 @@ export default function RootLayout({
             gtag('config', 'G-MTX57QBKCB');
           `}
         </Script>
-      </head>
-      <body
-        className={`${jetBrainsMono.className} flex flex-col items-center justify-between w-full min-h-screen bg-zinc-950 text-white selection:bg-[#78fdc8] selection:text-zinc-950 overflow-x-hidden`}
-      >
         <NextTopLoader color="#01fe98" height={2} showSpinner={false} />
         <Navbar />
         <main className="flex-grow w-full flex flex-col items-center justify-center">
@@ -217,7 +216,7 @@ export default function RootLayout({
               <Link href="https://leetcode.com/uzair1723" target="_blank" rel="noopener noreferrer" className="hover:text-neon-green transition-colors">
                 LeetCode
               </Link>
-              <a href="/assets/Resume - Uzair Alam - Software Engineer - Full.pdf" target="_blank" className="text-gray-300 hover:text-neon-green transition-colors">
+              <a href="/assets/Resume.pdf" target="_blank" className="text-gray-300 hover:text-neon-green transition-colors">
                 Resume PDF ↓
               </a>
             </div>

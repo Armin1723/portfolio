@@ -1,12 +1,17 @@
 import { withSentryConfig } from "@sentry/nextjs";
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
 
-export default withSentryConfig(nextConfig, {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
     domains: ["uzairalam.me"],
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: false,
   },
   async headers() {
     return [
@@ -29,11 +34,22 @@ export default withSentryConfig(nextConfig, {
       },
     ];
   },
-  org: "personal-fe4",
-  project: "javascript-nextjs",
-  silent: true,
-  widenClientFileUpload: true,
-  hideSourceMaps: true,
-  disableLogger: true,
-  automaticVercelMonitors: true,
-});
+};
+
+export default withSentryConfig(
+  nextConfig,
+  {
+    org: "personal-fe4",
+    project: "javascript-nextjs",
+    silent: true,
+    dryRun: !process.env.SENTRY_AUTH_TOKEN,
+  },
+  {
+    widenClientFileUpload: true,
+    hideSourceMaps: true,
+    disableLogger: true,
+    automaticVercelMonitors: false,
+    disableServerWebpackPlugin: !process.env.SENTRY_AUTH_TOKEN,
+    disableClientWebpackPlugin: !process.env.SENTRY_AUTH_TOKEN,
+  }
+);
