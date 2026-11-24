@@ -6,22 +6,65 @@ import React from 'react'
 import HamMenu from './HamMenu'
 
 const Navbar = () => {
-  const pathname = usePathname()
-  return (
-    <div className=' flex justify-between md:px-12 px-6 w-[100vw] lg:w-[70vw] items-center h-[10vh]'>
-      <Link href='/' className="navLeft hover:opacity-75 flex items-center font-semibold text-2xl">Uzair <span className='text-neon-green '>.</span></Link>
-      <div className="navRight max-sm:hidden select-none">
-        {navbarLinks.map((link, index) => {
-          const isActive = pathname.includes(link.href) ? 'text-neon-green border-b-2 border-neon-green' : ''
-          const specialButton = link.name === 'Hire Me' ? 'bg-neon-green text-zinc-900 rounded-2xl hover:border-b-0 hover:text-zinc-600 font-semibold' : ''
-          return (
-            <Link key={index} href={link.href} className={`text-xs md:mx-3 ${isActive} p-2 ${!specialButton && 'hover:text-neon-green'} ${specialButton} transition-all`}>{link.name}</Link>  
-          )}
-        )}
-      </div>
-      <HamMenu />
-    </div>
-  )
-}
+  const pathname = usePathname();
 
-export default Navbar
+  const isLinkActive = (href: string) => {
+    if (href.startsWith('http')) return false;
+    if (href === '/resume') return pathname === '/resume';
+    return pathname.startsWith(href);
+  };
+
+  return (
+    <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-zinc-900/80 border-b border-white/5 transition-all">
+      <div className="flex justify-between items-center max-w-6xl mx-auto px-4 md:px-8 h-16 md:h-20">
+        <Link
+          href="/"
+          className="hover:opacity-85 flex items-center font-bold text-2xl tracking-wide text-white group"
+        >
+          Uzair <span className="text-neon-green ml-0.5 group-hover:scale-125 transition-transform inline-block">.</span>
+        </Link>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+          {navbarLinks.map((link, index) => {
+            const active = isLinkActive(link.href);
+            const isHireMe = link.name === 'Hire Me';
+
+            if (isHireMe) {
+              return (
+                <a
+                  key={index}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-3 px-4 py-2 rounded-full bg-neon-green text-zinc-950 text-xs font-bold hover:bg-neon-green/90 transition-all duration-300 shadow-md shadow-neon-green/20"
+                >
+                  {link.name}
+                </a>
+              );
+            }
+
+            return (
+              <Link
+                key={index}
+                href={link.href}
+                className={`text-xs lg:text-sm font-medium px-3 py-1.5 rounded-lg transition-all duration-200 ${
+                  active
+                    ? 'text-neon-green bg-zinc-800/80 border border-neon-green/30'
+                    : 'text-gray-300 hover:text-neon-green hover:bg-zinc-800/40'
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Mobile Hamburger */}
+        <HamMenu />
+      </div>
+    </header>
+  );
+};
+
+export default Navbar;

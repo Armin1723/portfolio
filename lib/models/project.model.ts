@@ -26,19 +26,24 @@ const projectSchema = new Schema({
     },
     end_date: {
         type: Date,
-        required: true
+        required: false
     },
+    status: {
+        type: String,
+        required: false
+    }
 });
 
 // Define the project interface
-interface IProject extends Document {
+export interface IProject extends Document {
     title: string;
     description: string;
     code_link: string;
     live_link: string;
     techs: string[];
     start_date: Date;
-    end_date: Date;
+    end_date?: Date;
+    status?: string;
 }
 
 const Project = mongoose.models.Project || mongoose.model<IProject>('Project', projectSchema);

@@ -6,247 +6,299 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useRef } from "react";
 import CountUp from "react-countup";
-import SEO from "@/Components/SEO";
+import { blogsData } from "@/lib/constants/blogs";
 
-const page = () => {
+const HomePage = () => {
   gsap.registerPlugin(useGSAP);
-  const container = useRef(null);
+  const container = useRef<HTMLDivElement>(null);
+
   useGSAP(
     () => {
-      const tl = gsap.timeline();
-      tl.from(".line1", {
-        y: 24,
+      const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+
+      tl.from(".hero-badge", {
+        y: 15,
         opacity: 0,
-        delay: 2,
+        duration: 0.4,
+        delay: 0.1,
       });
-      tl.from(".line2", {
-        y: 24,
+      tl.from(".hero-heading", {
+        y: 20,
         opacity: 0,
-      });
-      tl.from(".line3", {
-        y: 24,
+        duration: 0.4,
+      }, "-=0.2");
+      tl.from(".hero-description", {
+        y: 15,
         opacity: 0,
-      });
-      tl.from(".description", {
-        x: -36,
+        duration: 0.4,
+      }, "-=0.2");
+      tl.from(".hero-actions", {
+        y: 15,
         opacity: 0,
-        ease: "power2.in",
-      });
-      tl.from(".image", {
-        x: 48,
+        duration: 0.4,
+      }, "-=0.2");
+      tl.from(".hero-image", {
+        scale: 0.85,
         opacity: 0,
-        duration: 2,
-        scale: 0.2,
-        delay: 0,
-        ease: "easeInOut",
-      });
-      tl.from(".interactions", {
+        duration: 0.6,
+      }, "-=0.4");
+      tl.from(".stat-box", {
+        y: 20,
         opacity: 0,
-        scale: 0.5,
-      });
-      tl.from(".icons", {
-        opacity: 0,
-        scale: 0.2,
-        stagger: 0.3,
-      });
-      tl.from(".exp", {
-        y: 24,
-        opacity: 0,
-        stagger: 0.3,
-        delay: -2,
-      });
-      gsap.from(".circle2", {
+        duration: 0.4,
+        stagger: 0.1,
+      }, "-=0.2");
+
+      gsap.to(".circle-orbit-1", {
         rotate: 360,
-        duration: 26,
+        duration: 20,
         repeat: -1,
-        transformOrigin: "center",
-        yoyo: true,
         ease: "none",
-      });
-      gsap.from(".circle3", {
-        rotate: -360,
-        duration: 26,
-        repeat: -1,
         transformOrigin: "center",
-        yoyo: true,
-        ease: "easeInOut",
+      });
+      gsap.to(".circle-orbit-2", {
+        rotate: -360,
+        duration: 25,
+        repeat: -1,
+        ease: "none",
+        transformOrigin: "center",
       });
     },
     { scope: container }
   );
+
+  const featuredBlogs = blogsData.slice(0, 3);
+
   return (
-    <section className="w-[100vw] lg:w-[70vw]" ref={container}>
-      <SEO />
+    <div ref={container} className="w-full max-w-6xl px-4 md:px-8 py-6 md:py-12 flex flex-col gap-16">
       <Stairs />
-      <div className="hero flex h-[65vh] flex-row justify-evenly px-6 lg:px-12 md:justify-between gap-8 items-center max-sm:flex-col-reverse">
-        <div className="details max-lg:p-2 max-lg:mt-2 flex items-left flex-col justify-center md:w-1/2">
-          <div className="overflow-hidden">
-            <p className="line1 text-xs ">Software Developer</p>
+
+      {/* Hero Section */}
+      <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-12 min-h-[50vh]">
+        {/* Left Column: Bio Details */}
+        <div className="flex flex-col items-start justify-center w-full md:w-3/5 gap-3">
+          <div className="hero-badge inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon-green/10 border border-neon-green/30 text-neon-green text-xs font-mono font-semibold">
+            <span className="w-2 h-2 rounded-full bg-neon-green animate-pulse"></span>
+            Full Stack Software Engineer
           </div>
-          <div className="text-4xl overflow-hidden font-bold tracking-wider">
-            <p className="line2 py-1">Hello I'm</p>
+
+          <div className="hero-heading flex flex-col">
+            <span className="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
+              Hello, I&apos;m
+            </span>
+            <span className="text-4xl md:text-6xl font-black tracking-tight text-neon-green">
+              Uzair Alam
+            </span>
           </div>
-          <div className="text-5xl overflow-hidden text-neon-green font-bold tracking-wider">
-            <p className="line3 py-1">Uzair Alam</p>
-          </div>
-          <div className="overflow-hidden font-thin text-xs leading-6">
-            <p className="description py-1 text-wrap">
-              I excel at creating MERN stack websites along with expertise in
-              NextJS.
-            </p>
-          </div>
-          <div className="interactions mt-4 flex gap-4 items-center">
+
+          <p className="hero-description text-sm md:text-base text-gray-300 font-light leading-relaxed max-w-xl">
+            Versatile and performance-driven engineer specializing in the <strong className="text-white font-medium">MERN stack, Next.js, and Node.js</strong> ecosystems. Experienced in architecting enterprise CRMs, automated fintech suites, OCR document pipelines, and scalable digital platforms for European and global markets.
+          </p>
+
+          {/* Call to action & Social links */}
+          <div className="hero-actions flex flex-wrap items-center gap-4 mt-2">
             <a
-              href="/assets/Resume.pdf"
+              href="/assets/Resume - Uzair Alam - Software Engineer - Full.pdf"
               target="_blank"
-              download="Resume-UzairAlam-SoftwareDeveloper"
-              className="px-4 py-1 select-none rounded-xl border-2 border-neon-green text-neon-green mr-4 hover:bg-neon-green hover:text-gray-900 uppercase transition-all duration-300"
+              download="Resume-UzairAlam-FullStackEngineer.pdf"
+              className="px-6 py-3 rounded-full bg-neon-green text-zinc-950 font-bold hover:bg-neon-green/90 transition-all duration-300 shadow-lg shadow-neon-green/20 flex items-center gap-2 text-xs md:text-sm"
             >
-              Download CV ↓
+              <span>Download CV</span>
+              <i className="ri-download-2-line text-base"></i>
             </a>
-            <Link href="https://github.com/Armin1723" target="blank">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 16 16"
-                id="Github"
-                className="icons h-6 w-6 hover:opacity-75 rounded-full cursor-pointer"
-              >
-                <path
-                  fill="#01fe98"
-                  d="M7.999 0C3.582 0 0 3.596 0 8.032a8.031 8.031 0 0 0 5.472 7.621c.4.074.546-.174.546-.387 0-.191-.007-.696-.011-1.366-2.225.485-2.695-1.077-2.695-1.077-.363-.928-.888-1.175-.888-1.175-.727-.498.054-.488.054-.488.803.057 1.225.828 1.225.828.714 1.227 1.873.873 2.329.667.072-.519.279-.873.508-1.074-1.776-.203-3.644-.892-3.644-3.969 0-.877.312-1.594.824-2.156-.083-.203-.357-1.02.078-2.125 0 0 .672-.216 2.2.823a7.633 7.633 0 0 1 2.003-.27 7.65 7.65 0 0 1 2.003.271c1.527-1.039 2.198-.823 2.198-.823.436 1.106.162 1.922.08 2.125.513.562.822 1.279.822 2.156 0 3.085-1.87 3.764-3.652 3.963.287.248.543.738.543 1.487 0 1.074-.01 1.94-.01 2.203 0 .215.144.465.55.386A8.032 8.032 0 0 0 16 8.032C16 3.596 12.418 0 7.999 0z"
-                  className="color5c6bc0 svgShape"
-                ></path>
-              </svg>
-            </Link>
 
-            <Link href="https://linkedin.com/in/uzair1723" target="blank">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 5 1036 990"
-                id="Linkedin"
-                className="icons h-6 w-6 hover:opacity-75 cursor-pointer "
+            <div className="flex items-center gap-2">
+              <Link
+                href="https://github.com/Armin1723"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                className="w-10 h-10 rounded-full bg-zinc-800 border border-white/10 hover:border-neon-green hover:text-neon-green flex items-center justify-center text-gray-300 text-lg transition-colors"
               >
-                <path
-                  d="M0 120c0-33.334 11.667-60.834 35-82.5C58.333 15.833 88.667 5 126 5c36.667 0 66.333 10.666 89 32 23.333 22 35 50.666 35 86 0 32-11.333 58.666-34 80-23.333 22-54 33-92 33h-1c-36.667 0-66.333-11-89-33S0 153.333 0 120zm13 875V327h222v668H13zm345 0h222V622c0-23.334 2.667-41.334 8-54 9.333-22.667 23.5-41.834 42.5-57.5 19-15.667 42.833-23.5 71.5-23.5 74.667 0 112 50.333 112 151v357h222V612c0-98.667-23.333-173.5-70-224.5S857.667 311 781 311c-86 0-153 37-201 111v2h-1l1-2v-95H358c1.333 21.333 2 87.666 2 199 0 111.333-.667 267.666-2 469z"
-                  fill="#01fe98"
-                  className="color000000 svgShape"
-                ></path>
-              </svg>
-            </Link>
+                <i className="ri-github-fill"></i>
+              </Link>
 
-            <Link href="https://leetcode.com/u/uzair1723" target="blank">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                enableBackground="new 0 0 24 24"
-                viewBox="0 0 24 24"
-                id="Leetcode"
-                className="icons h-6 w-6 hover:opacity-75 cursor-pointer "
+              <Link
+                href="https://linkedin.com/in/uzair1723"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                className="w-10 h-10 rounded-full bg-zinc-800 border border-white/10 hover:border-neon-green hover:text-neon-green flex items-center justify-center text-gray-300 text-lg transition-colors"
               >
-                <path
-                  d="M22,14.355c0-0.742-0.564-1.346-1.26-1.346H10.676c-0.696,0-1.26,0.604-1.26,1.346s0.563,1.346,1.26,1.346H20.74C21.436,15.702,22,15.098,22,14.355z"
-                  fill="#01fe98"
-                  className="color000000 svgShape"
-                ></path>
-                <path
-                  d="M3.482,18.187l4.313,4.361C8.768,23.527,10.113,24,11.598,24c1.485,0,2.83-0.512,3.805-1.494l2.588-2.637c0.51-0.514,0.492-1.365-0.039-1.9c-0.531-0.535-1.375-0.553-1.884-0.039l-2.676,2.607c-0.462,0.467-1.102,0.662-1.809,0.662s-1.346-0.195-1.81-0.662l-4.298-4.363c-0.463-0.467-0.696-1.15-0.696-1.863c0-0.713,0.233-1.357,0.696-1.824l4.285-4.38c0.463-0.467,1.116-0.645,1.822-0.645s1.346,0.195,1.809,0.662l2.676,2.606c0.51,0.515,1.354,0.497,1.885-0.038c0.531-0.536,0.549-1.387,0.039-1.901l-2.588-2.636c-0.649-0.646-1.471-1.116-2.392-1.33l-0.034-0.007l2.447-2.503c0.512-0.514,0.494-1.366-0.037-1.901c-0.531-0.535-1.376-0.552-1.887-0.038L3.482,10.476C2.509,11.458,2,12.813,2,14.311C2,15.809,2.509,17.207,3.482,18.187z"
-                  fill="#01fe98"
-                  className="color000000 svgShape"
-                ></path>
-              </svg>
-            </Link>
+                <i className="ri-linkedin-box-fill"></i>
+              </Link>
+
+              <Link
+                href="https://leetcode.com/uzair1723"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LeetCode Profile"
+                className="w-10 h-10 rounded-full bg-zinc-800 border border-white/10 hover:border-neon-green hover:text-neon-green flex items-center justify-center text-gray-300 text-lg transition-colors"
+              >
+                <i className="ri-code-box-line"></i>
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className="image select-none relative aspect-square md:w-[280px] md:h-[280px] w-[200px] h-[200px] flex items-center justify-center max-lg:mr-12 max-sm:mr-0 mix-blend-lighten">
-          <Image
-            src="/assets/profile.png"
-            priority
-            quality={100}
-            alt=""
-            sizes="(min-width: 768px) 220px, 258px"
-            fill
-            className="rounded-full object-contain "
-          />
+        {/* Right Column: Profile Avatar with Orbiting Neon Rings */}
+        <div className="hero-image relative flex items-center justify-center w-[240px] h-[240px] md:w-[320px] md:h-[320px]">
+          {/* Circular SVG Accents */}
           <svg
-            width="200"
-            height="200"
-            viewBox="0 0 200 200"
-            xmlns="http://www.w3.org/2000/svg"
-            className="frame absolute flex items-center justify-center md:w-[348px] md:h-[348px] aspect-square w-[248px] h-[248px] object-cover rounded-full"
+            className="circle-orbit-1 absolute inset-0 w-full h-full pointer-events-none"
+            viewBox="0 0 100 100"
           >
-            <defs>
-              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop
-                  offset="100%"
-                  style={{ stopColor: "#01fe98", stopOpacity: 0.5 }}
-                />
-              </linearGradient>
-            </defs>
             <circle
-              cx="100"
-              cy="100"
-              r="90"
+              cx="50"
+              cy="50"
+              r="46"
               stroke="#01fe98"
-              strokeWidth="1"
+              strokeWidth="0.8"
+              strokeDasharray="4 6 2"
               fill="none"
-              strokeDasharray="5 5 2"
-              className="circle2"
-            />
-            <circle
-              cx="100"
-              cy="100"
-              r="85"
-              stroke="#01fe98"
-              strokeWidth="1"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-              strokeDasharray="5 10 4"
-              className="circle3"
+              className="opacity-70"
             />
           </svg>
+          <svg
+            className="circle-orbit-2 absolute inset-0 w-full h-full pointer-events-none"
+            viewBox="0 0 100 100"
+          >
+            <circle
+              cx="50"
+              cy="50"
+              r="42"
+              stroke="#01fe98"
+              strokeWidth="0.8"
+              strokeDasharray="8 8"
+              strokeLinecap="round"
+              fill="none"
+              className="opacity-50"
+            />
+          </svg>
+
+          {/* Profile Image */}
+          <div className="relative w-[190px] h-[190px] md:w-[250px] md:h-[250px] rounded-full overflow-hidden bg-zinc-800/80 border-2 border-neon-green/40 shadow-2xl shadow-neon-green/10">
+            <Image
+              src="/assets/profile.png"
+              alt="Uzair Alam - Full Stack Software Engineer"
+              fill
+              priority
+              quality={95}
+              className="object-cover"
+              sizes="(min-width: 768px) 250px, 190px"
+            />
+          </div>
         </div>
       </div>
 
-      <div className="numbers grid grid-cols-2 md:grid-cols-4 space-y-2 py-1 place-items-stretch">
-        <div className="exp flex items-center gap-2 justify-center">
-          <div className="text-3xl font-extrabold">
-            <CountUp start={0} end={2} duration={4} suffix={"+"} delay={6} />
+      {/* Metrics & Benchmarks Grid */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-6 border-t border-white/10">
+        <div className="stat-box flex items-center gap-3 p-4 rounded-xl bg-zinc-800/50 border border-white/5">
+          <div className="text-3xl md:text-4xl font-black text-neon-green font-mono">
+            <CountUp start={0} end={2} duration={2} suffix="+" delay={0.2} />
           </div>
-          <p className="text-xs font-extralight">
-            Years of <br /> Experience
+          <p className="text-xs text-gray-300 font-medium leading-tight">
+            Years of<br />Experience
           </p>
         </div>
 
-        <div className="exp flex items-center gap-2 justify-center">
-          <div className="text-3xl font-extrabold">
-            <CountUp start={0} end={12} duration={4} suffix={"+"} delay={6} />
+        <div className="stat-box flex items-center gap-3 p-4 rounded-xl bg-zinc-800/50 border border-white/5">
+          <div className="text-3xl md:text-4xl font-black text-neon-green font-mono">
+            <CountUp start={0} end={15} duration={2} suffix="+" delay={0.2} />
           </div>
-          <p className="text-xs font-extralight">
-            Projects <br /> Completed
+          <p className="text-xs text-gray-300 font-medium leading-tight">
+            Production &<br />Key Projects
           </p>
         </div>
 
-        <div className="exp flex items-center gap-2 justify-center ">
-          <div className="text-3xl font-extrabold">
-            <CountUp start={0} end={12} duration={4} suffix={"+"} delay={6} />
+        <div className="stat-box flex items-center gap-3 p-4 rounded-xl bg-zinc-800/50 border border-white/5">
+          <div className="text-3xl md:text-4xl font-black text-neon-green font-mono">
+            <CountUp start={0} end={25} duration={2} suffix="+" delay={0.2} />
           </div>
-          <p className="text-xs font-extralight">
-            Technologies <br /> Mastered
+          <p className="text-xs text-gray-300 font-medium leading-tight">
+            Technologies &<br />Tools Mastered
           </p>
         </div>
 
-        <div className="exp flex items-center gap-2 justify-center">
-          <div className="text-3xl font-extrabold">
-            <CountUp start={0} end={200} duration={4} suffix={"+"} delay={6} />
+        <div className="stat-box flex items-center gap-3 p-4 rounded-xl bg-zinc-800/50 border border-white/5">
+          <div className="text-3xl md:text-4xl font-black text-neon-green font-mono">
+            <CountUp start={0} end={100} duration={2} suffix="+" delay={0.2} />
           </div>
-          <p className="text-xs font-extralight">
-            Code <br /> Commits
+          <p className="text-xs text-gray-300 font-medium leading-tight">
+            LeetCode DSA<br />Questions Solved
           </p>
         </div>
       </div>
-    </section>
+
+      {/* FEATURED BLOGS MODULE */}
+      <section className="flex flex-col gap-6 pt-8 border-t border-white/10 w-full">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div className="flex flex-col gap-1">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon-green/10 border border-neon-green/30 text-neon-green text-xs font-mono font-semibold w-fit">
+              <i className="ri-article-line"></i>
+              Technical Writings & Architecture
+            </div>
+            <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">
+              Featured <span className="text-neon-green">Blog Articles</span>
+            </h2>
+            <p className="text-sm text-gray-400 font-light max-w-xl">
+              Architectural deep dives into enterprise CRM scaling, fintech document automation, and sub-second performance optimizations.
+            </p>
+          </div>
+
+          <Link
+            href="/blogs"
+            className="inline-flex items-center gap-2 text-xs md:text-sm font-semibold text-neon-green hover:underline whitespace-nowrap self-start sm:self-auto"
+          >
+            <span>Browse All Blogs ({blogsData.length})</span>
+            <i className="ri-arrow-right-line"></i>
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 w-full">
+          {featuredBlogs.map((post) => (
+            <article
+              key={post.slug}
+              className="flex flex-col justify-between p-5 rounded-2xl bg-zinc-800/60 border border-white/10 hover:border-neon-green/50 hover:bg-zinc-800/80 transition-all duration-300 gap-4 group shadow-md"
+            >
+              <div className="flex flex-col gap-2.5">
+                <div className="flex items-center justify-between text-xs font-mono text-gray-400">
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-zinc-900 text-neon-green border border-neon-green/20">
+                    {post.category}
+                  </span>
+                  <span className="text-[11px] text-gray-400">{post.readTime}</span>
+                </div>
+
+                <Link href={`/blogs/${post.slug}`}>
+                  <h3 className="text-base md:text-lg font-bold text-white group-hover:text-neon-green transition-colors leading-snug line-clamp-2">
+                    {post.title}
+                  </h3>
+                </Link>
+
+                <p className="text-xs text-gray-300 font-light leading-relaxed line-clamp-3">
+                  {post.excerpt}
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between pt-3 border-t border-white/10 text-xs">
+                <time className="text-gray-400 font-mono text-[11px]">
+                  {post.publishedAt}
+                </time>
+
+                <Link
+                  href={`/blogs/${post.slug}`}
+                  className="text-neon-green font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform"
+                >
+                  <span>Read Article</span>
+                  <i className="ri-arrow-right-line text-xs"></i>
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
   );
 };
 
-export default page;
+export default HomePage;

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -18,8 +18,8 @@ import { sendMessage } from "@/lib/actions/message.actions";
 import { useToast } from "../ui/use-toast";
 
 const ContactForm = () => {
-
-  const { toast } = useToast()
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const form = useForm({
     resolver: zodResolver(contactFormSchema),
@@ -32,52 +32,64 @@ const ContactForm = () => {
       message: "",
     },
   });
+
   const handleMessageSent = async (values: z.infer<typeof contactFormSchema>) => {
-    const formattedValues = { ...values }
-    const result = await sendMessage(formattedValues);
-    if (result) {
-      toast({
-        variant: "default",
-        title: "Message Sent",
-        description: "We will get back to you soon.",
-        
-      })
-      form.reset()
-    } else {
+    try {
+      setIsSubmitting(true);
+      const formattedValues = { ...values };
+      const result = await sendMessage(formattedValues);
+      if (result) {
+        toast({
+          variant: "default",
+          title: "Message Sent Successfully",
+          description: "Thank you for reaching out! I will get back to you as soon as possible.",
+        });
+        form.reset();
+      } else {
+        toast({
+          variant: 'destructive',
+          title: "Message Failed",
+          description: "Something went wrong. Please email me directly at alam.airuz23@gmail.com.",
+        });
+      }
+    } catch (err: any) {
       toast({
         variant: 'destructive',
-        title: "Message Failed",
-        description: "Please try again later.",
-      })
+        title: "Submission Error",
+        description: err.message || "Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
+
   return (
-    <div className="flex flex-col gap-4 w-full md:w-3/5 p-5 rounded-lg bg-zinc-800">
-      <p className="text-3xl text-neon-green">Contact Us</p>
-      <p className="text-xs text-gray-400 leading-5 text-wrap">
-        We would love to hear from you! Whether you have a question about our
-        services, pricing, need a demo, or anything else, our team is ready to
-        answer all your questions. Please provide your contact details and a
-        brief message, and we will get back to you as soon as possible.
-      </p>
+    <div className="flex flex-col gap-4 w-full md:w-3/5 p-6 md:p-8 rounded-2xl bg-zinc-800/80 border border-white/10 shadow-xl">
+      <div className="flex flex-col gap-1">
+        <h2 className="text-2xl md:text-3xl font-extrabold text-neon-green">Let's Connect</h2>
+        <p className="text-xs md:text-sm text-gray-300 font-light leading-relaxed">
+          Whether you are looking to hire a full-stack engineer, need enterprise CRM architecture, or want to build high-performance web solutions, feel free to reach out.
+        </p>
+      </div>
+
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleMessageSent)}
-          className="flex flex-wrap items-center justify-between gap-4"
+          className="flex flex-wrap items-center justify-between gap-4 mt-2"
         >
           <FormField
             control={form.control}
             name="firstName"
             render={({ field }) => (
-              <FormItem className="w-full md:w-[48%]">
-                <FormControl className="flex text-semibold text-neon-green text-xs font-extralight capitalize">
+              <FormItem className="w-full sm:w-[48%]">
+                <FormControl>
                   <Input
-                    placeholder="First Name"
-                    className="border border-gray-900 focus:border-neon-green focus:outline-neon-green focus:ring-neon-green focus:bg-[#01fe9810] bg-zinc-900 placeholder:text-gray-400 placeholder:text-xs no-focus"
+                    placeholder="First Name *"
+                    className="border border-white/10 focus:border-neon-green bg-zinc-900 text-white placeholder:text-gray-500 text-sm rounded-xl py-5"
                     {...field}
                   />
                 </FormControl>
-                <FormMessage className="text-xs text-neon-green" />
+                <FormMessage className="text-xs text-red-400" />
               </FormItem>
             )}
           />
@@ -86,15 +98,15 @@ const ContactForm = () => {
             control={form.control}
             name="lastName"
             render={({ field }) => (
-              <FormItem className="w-full md:w-[48%]">
-                <FormControl className="flex text-semibold text-neon-green text-xs font-extralight capitalize">
+              <FormItem className="w-full sm:w-[48%]">
+                <FormControl>
                   <Input
                     placeholder="Last Name"
-                    className="border border-gray-900 focus:border-neon-green focus:outline-neon-green focus:ring-neon-green focus:bg-[#01fe9810] bg-zinc-900 placeholder:text-gray-400 placeholder:text-xs no-focus"
+                    className="border border-white/10 focus:border-neon-green bg-zinc-900 text-white placeholder:text-gray-500 text-sm rounded-xl py-5"
                     {...field}
                   />
                 </FormControl>
-                <FormMessage className="text-xs text-neon-green" />
+                <FormMessage className="text-xs text-red-400" />
               </FormItem>
             )}
           />
@@ -103,15 +115,16 @@ const ContactForm = () => {
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem className="w-full md:w-[48%]">
-                <FormControl className="flex text-semibold text-neon-green text-xs font-extralight">
+              <FormItem className="w-full sm:w-[48%]">
+                <FormControl>
                   <Input
-                    placeholder="Email"
-                    className="border border-gray-900 focus:border-neon-green focus:outline-neon-green focus:ring-neon-green focus:bg-[#01fe9810] bg-zinc-900 placeholder:text-gray-400 placeholder:text-xs no-focus"
+                    type="email"
+                    placeholder="Email Address *"
+                    className="border border-white/10 focus:border-neon-green bg-zinc-900 text-white placeholder:text-gray-500 text-sm rounded-xl py-5"
                     {...field}
                   />
                 </FormControl>
-                <FormMessage className="text-xs text-neon-green" />
+                <FormMessage className="text-xs text-red-400" />
               </FormItem>
             )}
           />
@@ -120,15 +133,15 @@ const ContactForm = () => {
             control={form.control}
             name="phone"
             render={({ field }) => (
-              <FormItem className="w-full md:w-[48%]">
-                <FormControl className="flex text-semibold text-neon-green text-xs font-extralight capitalize">
+              <FormItem className="w-full sm:w-[48%]">
+                <FormControl>
                   <Input
-                    placeholder="Contact Number"
-                    className="border border-gray-900 focus:border-neon-green focus:outline-neon-green focus:ring-neon-green focus:bg-[#01fe9810] bg-zinc-900 placeholder:text-gray-400 placeholder:text-xs no-focus"
+                    placeholder="Phone / WhatsApp"
+                    className="border border-white/10 focus:border-neon-green bg-zinc-900 text-white placeholder:text-gray-500 text-sm rounded-xl py-5"
                     {...field}
                   />
                 </FormControl>
-                <FormMessage className="text-xs text-neon-green" />
+                <FormMessage className="text-xs text-red-400" />
               </FormItem>
             )}
           />
@@ -137,15 +150,15 @@ const ContactForm = () => {
             control={form.control}
             name="subject"
             render={({ field }) => (
-              <FormItem className="w-full ">
-                <FormControl className="flex text-semibold text-neon-green text-xs font-extralight capitalize">
+              <FormItem className="w-full">
+                <FormControl>
                   <Input
-                    placeholder="A short but descriptive subject"
-                    className="border border-gray-900 focus:border-neon-green focus:outline-neon-green focus:ring-neon-green focus:bg-[#01fe9801] bg-zinc-900 placeholder:text-gray-400 placeholder:text-xs no-focus"
+                    placeholder="Subject *"
+                    className="border border-white/10 focus:border-neon-green bg-zinc-900 text-white placeholder:text-gray-500 text-sm rounded-xl py-5"
                     {...field}
                   />
                 </FormControl>
-                <FormMessage className="text-xs text-neon-green" />
+                <FormMessage className="text-xs text-red-400" />
               </FormItem>
             )}
           />
@@ -154,21 +167,37 @@ const ContactForm = () => {
             control={form.control}
             name="message"
             render={({ field }) => (
-              <FormItem className="w-full ">
-                <FormControl className="flex text-semibold text-neon-green text-xs font-extralight title">
+              <FormItem className="w-full">
+                <FormControl>
                   <Textarea
-                    placeholder="Enter your message."
-                    autoComplete="on"
-                    className="border border-gray-900 focus:border-neon-green focus:outline-neon-green focus:ring-neon-green focus:bg-[#01fe9802] bg-zinc-900 placeholder:text-gray-400 placeholder:text-xs no-focus"
+                    rows={4}
+                    placeholder="Your message... *"
+                    className="border border-white/10 focus:border-neon-green bg-zinc-900 text-white placeholder:text-gray-500 text-sm rounded-xl resize-none"
                     {...field}
                   />
                 </FormControl>
-                <FormMessage className="text-xs text-neon-green" />
+                <FormMessage className="text-xs text-red-400" />
               </FormItem>
             )}
           />
 
-          <Button type="submit" className="max-lg:w-full w-1/3 border border-neon-green bg-neon-green/20 hover:before:z-[-1] hover:z-[10] text-black relative rounded-xl before:bg-neon-green hover:bg-neon-green/20 before:h-full before:w-0 hover:before:w-full before:absolute before:inset-0 before:rounded-xl before:transition-all before:duration-500 transition-all duration-500">Send Message</Button>
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full sm:w-auto px-8 py-2.5 rounded-xl bg-neon-green text-zinc-950 font-bold hover:bg-neon-green/90 transition-all duration-300 shadow-lg shadow-neon-green/20 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          >
+            {isSubmitting ? (
+              <>
+                <i className="ri-loader-4-line animate-spin text-base"></i>
+                <span>Sending...</span>
+              </>
+            ) : (
+              <>
+                <span>Send Message</span>
+                <i className="ri-send-plane-fill text-base"></i>
+              </>
+            )}
+          </Button>
         </form>
       </Form>
     </div>

@@ -3,43 +3,44 @@ import ProjectCard from "./cards/ProjectCard";
 import { fetchProjects } from "@/lib/actions/project.actions";
 import Pagination from "./shared/Pagination";
 
-interface props {
+interface Props {
   searchParams: {
-    page: number;
+    page?: number | string;
   };
 }
 
-interface projectProp {
-  title: string;
-  description: string;
-  code_link: string;
-  live_link: string;
-  techs: string[];
-  start_date: Date;
-  end_date: Date;
-}
+const ProjectCardSuspense = async ({ searchParams }: Props) => {
+  const pageNum = Number(searchParams?.page) || 1;
+  const results = await fetchProjects(pageNum, 4);
 
-const ProjectCardSuspense = async ({ searchParams }: props) => {
-  const results = await fetchProjects(
-    searchParams.page ? searchParams.page : 1
-  );
   return (
-    <>
-      <div className="transition-all duration-500 grid grid-cols-1 md:grid-cols-2 overflow-y-scroll max-lg:mx-4 h-[80vh] custom-scrollbar gap-[20px] max-sm:gap-[50px] max-sm:py-1">
-      {results?.projects &&
-        results.projects.map((project: projectProp, index: number) => (
-          <ProjectCard key={index} index={index} project={project} />
-        ))}
+    <div className="flex flex-col gap-6 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+        {results?.projects && results.projects.length > 0 ? (
+          results.projects.map((project: any, index: number) => (
+            <ProjectCard
+              key={project._id ? project._id.toString() : index}
+              index={(pageNum - 1) * 4 + index}
+              project={project}
+            />
+          ))
+        ) : (
+          <div className="col-span-2 text-center py-12 text-gray-400">
+            No projects found.
+          </div>
+        )}
       </div>
-      
-      {(results?.hasMore || searchParams?.page != 1) && (
-        <Pagination
-          url={"/projects"}
-          page={searchParams.page ? searchParams.page : 1}
-          hasMore={results?.hasMore || false}
-        />
+
+      {(results?.hasMore || pageNum > 1) && (
+        <div className="flex justify-center pt-4">
+          <Pagination
+            url={"/projects"}
+            page={pageNum}
+            hasMore={results?.hasMore || false}
+          />
+        </div>
       )}
-    </>
+    </div>
   );
 };
 

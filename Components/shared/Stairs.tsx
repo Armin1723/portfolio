@@ -1,33 +1,43 @@
 'use client'
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
-import React, { useRef} from "react";
+import React, { useRef } from "react";
 
 const Stairs = () => {
-  const stairsContainer = useRef(null);
+  const stairsContainer = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
-      gsap.to(".stairs", {
-        height : "100vh",
-        duration: 0.6,
-        z: 99, 
-        repeat: 1,
-        yoyo: true,
-        stagger: 0.1,
-      })
+      const tl = gsap.timeline();
+      tl.to(".stair-step", {
+        height: "100%",
+        duration: 0.35,
+        ease: "power2.inOut",
+        stagger: 0.05,
+      });
+      tl.to(".stair-step", {
+        height: "0%",
+        duration: 0.35,
+        ease: "power2.inOut",
+        stagger: 0.05,
+      });
     },
     { scope: stairsContainer }
   );
-  return <div ref={stairsContainer} className="absolute top-0 left-0 max-w-screen overflow-hidden flex z-[99]">
-    <div className={`stairs h-0 w-[14.5vw] bg-white/90 backdrop-blur-lg z-99`}></div>
-    <div className={`stairs h-0 w-[14vw] bg-white/90 backdrop-blur-lg z-99`}></div>
-    <div className={`stairs h-0 w-[14.5vw] bg-white/90 backdrop-blur-lg`}></div>
-    <div className={`stairs h-0 w-[14vw] bg-white/90 backdrop-blur-lg`}></div>
-    <div className={`stairs h-0 w-[14.5vw] bg-white/90 backdrop-blur-lg`}></div>
-    <div className={`stairs h-0 w-[14vw] bg-white/90 backdrop-blur-lg`}></div>
-    <div className={`stairs h-0 w-[14.5vw] bg-white/90 backdrop-blur-lg`}></div>
-  </div>;
+
+  return (
+    <div
+      ref={stairsContainer}
+      className="fixed inset-0 w-full h-full pointer-events-none z-50 flex overflow-hidden"
+    >
+      {[...Array(6)].map((_, i) => (
+        <div
+          key={i}
+          className="stair-step h-0 w-1/6 bg-white/90 backdrop-blur-sm"
+        />
+      ))}
+    </div>
+  );
 };
 
 export default Stairs;

@@ -1,32 +1,52 @@
 'use server'
 
-import { connectToDB } from "../db/db"
-import Project from "../models/project.model"
+import { connectToDB } from "../db/db";
+import Project from "../models/project.model";
+import { defaultProjects } from "../constants/projects";
 
-export const createProject = async () => {
-    await connectToDB()
-    const title = 'Task-Venture'
-    const project1 = await Project.findOne({ title: title })
-    if(project1) return console.log("Project already exists")
-    const project = await Project.create({
-        title: title,
-        description: "A React project that demonstrates the use of pdfme library for PDF manipulation in React",
-        code_link: "https://github.com/Armin1723/task-venture.git",
-        live_link: "https://task-venture.netlify.app/",
-        techs: ["ReactJS", "NodeJS", "pdfme", "React Loaders", "TailwindCSS"],
-        start_date: new Date("2024-03-24"),
-        end_date: new Date("2024-03-26")
-    })
-}
-
-export const fetchProjects = async (page: number) => {
+export const seedResumeProjects = async () => {
     try {
-        await connectToDB()
-        const projects = await Project.find().limit(4).skip((page - 1) * 4)
-        const totalProject = await Project.countDocuments()
-        const hasMore = totalProject > page * 4
-        return { hasMore, projects }
+        await connectToDB();
+        for (const p of defaultProjects) {
+            await Project.findOneAndUpdate(
+                { title: p.title },
+                { $set: p },
+                { upsert: true, new: true }
+            );
+        }
+        return true;
     } catch (error: any) {
-        console.log('Error in fetchProjects', error.message)
+        console.log('Error syncing resume projects:', error.message);
+        return false;
     }
-}
+};
+
+export const fetchProjects = async (page: number = 1, pageSize: number = 4) => {
+    try {
+        await connectToDB();
+        const totalInDb = await Project.countDocuments();
+        if (totalInDb > 0) {
+            const projects = await Project.find()
+                .sort({ start_date: -1 })
+                .skip((page - 1) * pageSize)
+                .limit(pageSize)
+                .lean();
+            const hasMore = totalInDb > page * pageSize;
+            return {
+                hasMore,
+                projects: JSON.parse(JSON.stringify(projects))
+            };
+        }
+    } catch (error: any) {
+        console.log('DB error in fetchProjects, falling back to default projects:', error.message);
+    }
+
+    // Fallback if DB query returned 0 or errored
+    const startIndex = (page - 1) * pageSize;
+    const paginated = defaultProjects.slice(startIndex, startIndex + pageSize);
+    const hasMore = defaultProjects.length > page * pageSize;
+    return {
+        hasMore,
+        projects: JSON.parse(JSON.stringify(paginated))
+    };
+};
